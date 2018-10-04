@@ -43,8 +43,10 @@ public class Graduation {
 			}
 			ret = Math.min(ret, graduate(semester + 1, taken | take) + 1);
 		}
-		//이번 학기에 아무 것도 듣지 않을 경우
+		//이번 학기에 아무 것도 듣지 않을 경우 체크
 		ret = Math.min(ret, graduate(semester + 1, taken));
+		//자바에서는 값에 대한 포인터 지정이 안되므로 따로 넣어줘야 메모이제이션이 가능
+		cache[semester][taken] = ret;
 		return ret;
 	}
 	
