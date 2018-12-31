@@ -3,7 +3,7 @@ package algorithm.baekjoon.stepwise.binomialcoefficient;
 import java.io.*;
 
 /**
- * https://github.com/ParkKyungWon/JobDongSani/tree/master/JobDongSani/src/algorithm/baekjoon/stepwise
+ * https://github.com/ParkKyungWon/JobDongSani/blob/master/JobDongSani/src/algorithm/baekjoon/stepwise/binomialcoefficient/BinomialCoefficient1.java
  *
  * Baekjoon > 문제 > 단계별로 풀어보기 > 이항 계수 > 이항 계수 1
  * 1. n, k를 뽑아낸다.
