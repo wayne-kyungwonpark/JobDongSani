@@ -3,6 +3,14 @@ package algorithm.baekjoon.stepwise.queue;
 import java.io.*;
 import java.util.LinkedList;
 
+/**
+ * https://github.com/ParkKyungWon/JobDongSani/blob/master/JobDongSani/src/algorithm/baekjoon/stepwise/queue/Queue.java
+ *
+ * Baekjoon > 문제 > 단계별로 풀어보기 > 큐 > 큐
+ * 1. cmdNum: 총 명령 갯수, cmdFreq: 명령 갯수를 세기 위한 파라미터
+ * 2. split 메소드 사용하여 " "를 기준으로 명령어 + 숫자 or 명령어로 바꾼다.
+ * 3. 명령어에 따른 처리를 수행한다.
+ */
 public class Queue {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
