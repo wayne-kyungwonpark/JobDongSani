@@ -9,7 +9,7 @@ import java.io.*;
  * 1. num: 0의 개수
  * 2. n!을 소인수분해 했을 때 10의 지수를 구하는 문제이다.
  * 3. 10 = 2 x 5 인데, n!에서 2의 갯수가 5의 갯수보다 많으므로 n!에서 5의 갯수를 찾으면 된다.
- * 4. 답은 [n! / 5] + [n! / 5^2] + [n! / 5^3] + ... 이다.
+ * 4. 답은 [n / 5] + [n / 5^2] + [n / 5^3] + ... 이다.
  */
 public class FactorialZeroNumbers {
     public static void main(String[] args) throws IOException {
