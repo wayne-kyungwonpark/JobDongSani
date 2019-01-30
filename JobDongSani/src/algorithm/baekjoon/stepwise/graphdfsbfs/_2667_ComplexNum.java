@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- * https://github.com/ParkKyungWon/JobDongSani/blob/master/JobDongSani/src/algorithm/baekjoon/stepwise/graphdfsbfs/_10451_PermutationCycle.java
+ * https://github.com/ParkKyungWon/JobDongSani/blob/master/JobDongSani/src/algorithm/baekjoon/stepwise/graphdfsbfs/_2667_ComplexNum.java
  *
  * Baekjoon > 문제 > 단계별로 풀어보기 > 그래프 (DFS, BFS) > 단지번호붙이기
  * 0. BFS를 통해 풀이
