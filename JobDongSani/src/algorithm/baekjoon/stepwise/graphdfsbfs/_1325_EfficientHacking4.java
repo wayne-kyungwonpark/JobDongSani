@@ -49,7 +49,7 @@ public class _1325_EfficientHacking4 {
                 m = Integer.parseInt(strArr[1]);
                 confidence = new ArrayList<ArrayList<Integer>>(n + 1);
                 for (int i = 0; i < n + 1; i++) {
-                    confidence.add(new ArrayList<>(0));
+                    confidence.add(new ArrayList<Integer>(0));
                 }
                 visited = new int[n + 1];
                 nodeValue = new int[n + 1];

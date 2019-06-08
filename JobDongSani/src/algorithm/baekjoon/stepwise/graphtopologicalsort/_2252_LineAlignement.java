@@ -35,7 +35,7 @@ public class _2252_LineAlignement {
                 order = new int[n + 1];
                 graph = new ArrayList<>(n + 1);
                 for (int i = 0; i <= n; i++) {
-                    graph.add(new ArrayList<>());
+                    graph.add(new ArrayList<Integer>());
                 }
             }else{
                 int a = Integer.parseInt(strArr[0]);
