@@ -2,6 +2,7 @@ package algorithm.baekjoon.stepwise.dynamicprogramming;
 
 import java.util.Scanner;
 
+// 다시 풀어야 함... dp 설계부터 잘못한 듯
 public class _11053_LongestIncrementSubSequence {
     private static int N = 0;
     private static int[] sequence = null;
@@ -31,7 +32,7 @@ public class _11053_LongestIncrementSubSequence {
                 maxLength = longestLengths[i][N - 1];
             }
         }
-        System.out.println(longestLengths[0][N - 1]);
+        System.out.println(maxLength);
         scn.close();
     }
 
@@ -47,16 +48,37 @@ public class _11053_LongestIncrementSubSequence {
             maxNums[start][end] = sequence[end];
         }else{
             int maxLength = 1;
-            int maxNum = sequence[end];
+            int maxNum = 0;
             for (int i = start; i < end; i++) {
-                if(maxNums[i][end - 1] < sequence[end]){
-                    if(maxLength < longestLengths[i][end - 1] + 1){
-                        maxLength = longestLengths[i][end - 1] + 1;
-                        maxNum = sequence[end];
-                    }else{
-                        if(maxNum < maxNums[i][end - 1]){
-                            maxNum = maxNums[i][end - 1];
+                for (int j = start; j <= i; j++) {
+                    if(maxLength < longestLengths[j][i]){
+                        maxLength = longestLengths[j][i];
+                        maxNum = maxNums[j][i];
+                    }else if(maxLength == longestLengths[j][i]){
+                        if(maxNum == 0 || maxNum > maxNums[j][i]){
+                            maxNum = maxNums[j][i];
                         }
+                    }
+                }
+            }
+
+            if(maxNum < sequence[end]){
+                maxLength++;
+                maxNum = sequence[end];
+            }else{
+                int secondMaxNum = 0;
+                for (int i = start; i < end; i++) {
+                    for (int j = start; j <= i; j++) {
+                        if(longestLengths[j][i] == maxLength - 1){
+                            if(secondMaxNum == 0 || secondMaxNum > maxNums[j][i]){
+                                secondMaxNum = maxNums[j][i];
+                            }
+                        }
+                    }
+                }
+                if(secondMaxNum < sequence[end]){
+                    if(maxNum > sequence[end]){
+                        maxNum = sequence[end];
                     }
                 }
             }
