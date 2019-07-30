@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
-public class Dwarves {
+public class _2309_Dwarves {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,9 +24,11 @@ public class Dwarves {
 		}
 		int diff = sum - 100;
 		Arrays.sort(heights);
+		boolean isEnded = false;
 		for(int j=0;j<8;j++) {
 			for(int k=j+1;k<9;k++) {
 				if(heights[j] + heights[k] == diff) {
+					isEnded = true;
 					for(int l=0;l<9;l++) {
 						if(l != j && l != k) {
 							bw.write(String.valueOf(heights[l]));
@@ -36,6 +38,9 @@ public class Dwarves {
 					bw.flush();
 					break;
 				}
+			}
+			if(isEnded){
+				break;
 			}
 		}
 		br.close();
