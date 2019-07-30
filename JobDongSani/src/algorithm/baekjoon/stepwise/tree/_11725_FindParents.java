@@ -1,23 +1,19 @@
 package algorithm.baekjoon.stepwise.tree;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 
-public class FindParents {
-	
-	private static int[] parents;
+public class _11725_FindParents {
+	private static int N = 0;
+	private static int[] parents = new int[100001];
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		String str = null;
-		int nodeNum = 0;
+		String str;
 		while((str = br.readLine()) != null){
-			
+			if(N == 0){
+				N = Integer.parseInt(str);
+			}
 		}
 	}
-
 }
