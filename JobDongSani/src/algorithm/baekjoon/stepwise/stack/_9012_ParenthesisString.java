@@ -2,7 +2,7 @@ package algorithm.baekjoon.stepwise.stack;
 
 import java.util.Scanner;
 
-public class ParenthesisString {
+public class _9012_ParenthesisString {
 
 	private static void checkVps(String str) {
 		char[] chArr = str.toCharArray();
