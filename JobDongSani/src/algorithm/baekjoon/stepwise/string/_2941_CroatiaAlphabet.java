@@ -2,7 +2,7 @@ package algorithm.baekjoon.stepwise.string;
 
 import java.util.Scanner;
 
-public class CroatiaAlphabet {
+public class _2941_CroatiaAlphabet {
 
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
@@ -30,12 +30,15 @@ public class CroatiaAlphabet {
 				}
 				count++;
 			}else {
-				if(i != leng - 1 && "z".equals(str)) {
+				if (i != leng - 1 && "z".equals(str)) {
 					String thirdStr = Character.toString(chArr[i + 1]);
-					if(!"=".equals(thirdStr)) {
+					if (!"=".equals(thirdStr)) {
 						count++;
 						nextUsed = false;
 					}
+				}else if(i == leng - 1 && "z".equals(str)){
+					count++;
+					nextUsed = false;
 				}else {
 					nextUsed = false;						
 				}
