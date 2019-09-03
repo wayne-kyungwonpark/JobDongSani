@@ -2,11 +2,11 @@ package algorithm.baekjoon.stepwise.priorityqueue;
 
 import java.io.*;
 
-public class _11279_MaxHeap {
+public class _1927_MinHeap {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        MaxHeap heap = new MaxHeap();
+        MeanHeap heap = new MeanHeap();
         String str;
         int N = 0, nFreq = 0;
         StringBuilder sb = new StringBuilder();
@@ -36,18 +36,18 @@ public class _11279_MaxHeap {
         br.close();
     }
 
-    private static class MaxHeap{
+    private static class MeanHeap{
         int[] arr;
         int size;
-        public MaxHeap(){
+        public MeanHeap(){
             arr = new int[100001];
             size = 0;
         }
         void insert(int num){
             arr[++size] = num;
             for (int i = size; i > 1; i /= 2) {
-                if(arr[i / 2] < arr[i]){
-                    swap(i / 2, i);
+                if(arr[i] < arr[i / 2]){
+                    swap(i, i / 2);
                 }else{
                     break;
                 }
@@ -64,22 +64,24 @@ public class _11279_MaxHeap {
             if(size == 0){
                 return 0;
             }
-            int max = arr[1];
+            int min = arr[1];
             swap(1, size);
             arr[size--] = 0;
+            // 자식 노드가 있을 경우에만 들어감
             for (int i = 1; i * 2 <= size;) {
-                if(arr[i] > arr[i * 2] && ((i * 2 + 1 <= size && arr[i] > arr[i * 2 + 1]) || (i * 2 + 1 > size))){
+                // 왼쪽 자식이 부모보다 크면서 오른쪽 자식이 없거나, 오른쪽 자식도 부모보다 클 때 break
+                if(arr[i] < arr[i * 2] && ((i * 2 + 1 <= size && arr[i] < arr[i * 2 + 1]) || (i * 2 + 1 > size))){
                     break;
-                }else if((i * 2 + 1 <= size && arr[i * 2] > arr[i * 2 + 1]) || (i * 2 + 1 > size)){
+                // 오른쪽 자식이 없을 경우, 혹은 오른쪽 자식이 있는데 왼쪽 자식이 오른쪽 자식보다 작을 경우
+                }else if((i * 2 + 1 <= size && arr[i * 2] < arr[i * 2 + 1]) || (i * 2 + 1 > size)){
                     swap(i, i * 2);
-                    i *= 2;
+                    i = i * 2;
                 }else{
                     swap(i, i * 2 + 1);
                     i = i * 2 + 1;
                 }
             }
-
-            return max;
+            return min;
         }
     }
 }
