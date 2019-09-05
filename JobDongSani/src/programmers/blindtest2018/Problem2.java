@@ -21,43 +21,43 @@ public class Problem2 {
                 index = stages[i];
             }
         }
-        // failratePerUser[i][0]: stage 번호 (j)
-        // failratePerUser[i][0]: stage j의 실패율
-        double[][] failratePerUser = new double[N][2];
+        // failratePerStage[i][0]: stage 번호 (ex. j)
+        // failratePerStage[i][0]: stage j의 실패율
+        double[][] failratePerStage = new double[N][2];
         for (int i = 0; i < N; i++) {
-            failratePerUser[i][0] = i + 1;
+            failratePerStage[i][0] = i + 1;
             if(overs[i] == 0){
-                failratePerUser[i][1] = 0.0;
+                failratePerStage[i][1] = 0.0;
             }else{
-                failratePerUser[i][1] = ((double) (overs[i] - overs[i + 1])) / overs[i];
+                failratePerStage[i][1] = ((double) (overs[i] - overs[i + 1])) / overs[i];
             }
         }
         double[][] tmps = new double[N][2];
         // 실패율 기준으로 오름차순 정렬
-        merge(tmps, failratePerUser, 0, N - 1, 1);
+        merge(tmps, failratePerStage, 0, N - 1, 1);
         // 실패율 기준으로 내림차순 정렬
-        double[][] failratePerUserMax = new double[N][2];
+        double[][] failratePerStageMax = new double[N][2];
         for (int i = 0; i < N; i++) {
-            failratePerUserMax[i][0] = failratePerUser[N - 1 - i][0];
-            failratePerUserMax[i][1] = failratePerUser[N - 1 - i][1];
+            failratePerStageMax[i][0] = failratePerStage[N - 1 - i][0];
+            failratePerStageMax[i][1] = failratePerStage[N - 1 - i][1];
         }
         // 실패율이 내림차순으로 정렬된 상태에서 실패율이 동일할 경우, stage 번호 기준으로 오름차순 정렬
-        double failrate = failratePerUserMax[0][1];
+        double failrate = failratePerStageMax[0][1];
         int sameIndex = 0;
         for (int i = 0; i < N; i++) {
-            if(Double.compare(failrate, failratePerUserMax[i][1]) != 0){
-                merge(tmps, failratePerUserMax, sameIndex, i - 1, 0);
-                failrate = failratePerUserMax[i][1];
+            if(Double.compare(failrate, failratePerStageMax[i][1]) != 0){
+                merge(tmps, failratePerStageMax, sameIndex, i - 1, 0);
+                failrate = failratePerStageMax[i][1];
                 sameIndex = i;
             }
         }
         if(sameIndex < N - 1){
-            merge(tmps, failratePerUserMax, sameIndex, N - 1, 0);
+            merge(tmps, failratePerStageMax, sameIndex, N - 1, 0);
         }
-        // failratePerUserMax[i][0] 을 answer에 담음
+        // failratePerStageMax[i][0] 을 answer에 담음
         answer = new int[N];
         for (int i = 0; i < N; i++) {
-            answer[i] = (int) failratePerUserMax[i][0];
+            answer[i] = (int) failratePerStageMax[i][0];
         }
 
         return answer;
