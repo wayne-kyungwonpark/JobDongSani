@@ -21,7 +21,7 @@ public class Problem4Eff {
         Arrays.sort(sorted_food_times);
         int minIndex = 0;
         int minCapSum = 0;
-        while(minCapFood * foodNums <= k){
+        while((long) minCapFood * (long) foodNums <= k){
             int nums = 0;
             minCapSum = sorted_food_times[minIndex];
             for (int i = minIndex; i < sorted_food_times.length; i++) {
