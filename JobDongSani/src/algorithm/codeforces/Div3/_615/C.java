@@ -9,7 +9,7 @@ import java.util.*;
  * 1. 서로 다른 소인수가 3개 이상 (a, b, c)일 경우 -> a, b, 나머지
  * 2. 서로 다른 소인수가 1개일 경우, 해당 소인수에 대한 차수가 6 이상 -> a, a^2, a^(차수-3)
  * 3. 서로 다른 소인수가 2개일 경우,
- *    소인수의 차수가 모두 2 이상 -> a, b, ab
+ *    소인수의 차수가 모두 2 이상 -> a, b, 나머지
  *    하나의 소인수라도 차수가 3 이상 -> a, b, b^(차수-1)
  */
 public class C {
@@ -72,16 +72,18 @@ public class C {
         while(tmp % 2 == 0){
             if(!factorAndOrder.containsKey(2)){
                 factorAndOrder.put(2, 1);
+            }else{
+                factorAndOrder.put(2, factorAndOrder.get(2) + 1);
             }
-            factorAndOrder.put(2, factorAndOrder.get(2) + 1);
             tmp /= 2;
         }
         for (int i = 3; i <= rootN; i+=2) {
             while(tmp % i == 0){
                 if(!factorAndOrder.containsKey(i)){
                     factorAndOrder.put(i, 1);
+                }else{
+                    factorAndOrder.put(i, factorAndOrder.get(i) + 1);
                 }
-                factorAndOrder.put(i, factorAndOrder.get(i) + 1);
                 tmp /= i;
             }
         }
