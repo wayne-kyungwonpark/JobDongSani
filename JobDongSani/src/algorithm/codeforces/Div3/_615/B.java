@@ -46,7 +46,7 @@ public class B {
         int leftIndex = 0;
         for (int i = 1; i < n; i++) {
             if(packages[leftIndex][0] != packages[i][0]){
-                if(packages[leftIndex][1] > packages[i][1]) {
+                if(packages[i - 1][1] > packages[i][1]) {
                     strArr[0] = "NO";
                     break;
                 }
@@ -79,6 +79,9 @@ public class B {
                 merge1D(packages, tmp, leftIndex, i - 1, 1);
                 leftIndex = i;
             }
+        }
+        if(leftIndex < n - 1){
+            merge1D(packages, tmp, leftIndex, n - 1, 1);
         }
     }
 
