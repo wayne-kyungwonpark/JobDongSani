@@ -18,16 +18,20 @@ public class _17387_SegmentIntersection2 {
         }
     }
 
-//    private static <T> void swap(T a, T b){
-//        T tmp = a;
+    // java 는 항상 call by value이다.
+    // 만약 swap 메소드를 아래와 같이 구현한다면, a, b는 바뀌지 않는 상태로 있을 것.
+//    private static void swap(Vector a, Vector b){
+//        Vector tmp = new Vector(a.x, a.y);
 //        a = b;
 //        b = tmp;
 //    }
 
     private static void swap(Vector a, Vector b){
         Vector tmp = new Vector(a.x, a.y);
-        a = b;
-        b = tmp;
+        a.x = b.x;
+        a.y = b.y;
+        b.x = tmp.x;
+        b.y = tmp.y;
     }
 
     private static boolean segmentIntersection(Vector a, Vector b, Vector c, Vector d){
