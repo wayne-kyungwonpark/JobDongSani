@@ -62,9 +62,10 @@ class Buffer {
 	}
 
 	synchronized void insert(int item) {
-		while (count == size){}
 		try {
-			wait();
+			while (count == size){
+				wait();
+			}
 		} catch (InterruptedException e) {
 		}
 		buf[in] = item;
@@ -74,9 +75,10 @@ class Buffer {
 	}
 
 	synchronized int remove() {
-		while (count == 0){}
 		try {
-			wait();
+			while (count == 0){
+				wait();				
+			}
 		} catch (InterruptedException e) {
 		}
 		int item = buf[out];
