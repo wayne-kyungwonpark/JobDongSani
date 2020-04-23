@@ -1,10 +1,9 @@
 package programmers.exercise.stackqueue;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
 import java.util.Stack;
 
-public class IronBar {
+public class IronBar2 {
     public static void main(String[] args) {
         String arrangement = "()(((()())(())()))(())";
         int ans = solution(arrangement);
@@ -28,37 +27,16 @@ public class IronBar {
             }
         }
 
-        int left = 0; // (
-        int right = 0; // )
-        int laser = 0;
-        Stack<Character> tmp = new Stack<>();
+        Stack<Integer> right = new Stack<>();
         while (!change.isEmpty()) {
             if (change.peek().charValue() == 'L') {
-                if (left == 0 && right == 0) {
-                    change.pop();
-                } else {
-                    tmp.push(change.pop());
-                    laser++;
-                }
+                answer += right.size();
             } else if (change.peek().charValue() == ')') {
-                right++;
-                tmp.push(change.pop());
-            } else { // (
-                left++;
-                if (left == right) { // 초기화
-                    answer += (laser + 1);
-                    left = 0;
-                    right = 0;
-                    laser = 0;
-                    change.pop();
-                    while(tmp.size() > 1){
-                        change.push(tmp.pop());
-                    }
-                    tmp.pop();
-                }else{
-                    tmp.push(change.pop());
-                }
+                right.push(1);
+            } else{
+              answer += right.pop();
             }
+            change.pop();
         }
         return answer;
     }
