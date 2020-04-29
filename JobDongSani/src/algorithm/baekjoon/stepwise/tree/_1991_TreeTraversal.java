@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class TreeOrder {
+public class _1991_TreeTraversal {
 	
 	private static final String DOT = ".";
 
