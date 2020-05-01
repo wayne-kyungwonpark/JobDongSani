@@ -45,6 +45,23 @@ public class _2263_TreeTraversal {
         preOrder(root.right);
     }
 
+    /**
+     * 핵심 로직.
+     * 1. postorder의 마지막 element는 해당 트리의 root 노드가 된다.
+     * 2. 해당 element를 inorder에서 찾는다. (inorder의 index에서 찾았다고 가정)
+     * 3. root 노드의 오른쪽 서브 트리, 왼쪽 서브 트리에 속한 element의 범위 인덱스를 구해 재귀 로직을 돌린다.
+     *    (오른쪽 서브 트리)
+     *    - inorder의 index + 1 인덱스부터 끝 인덱스까지는 root 노드의 오른쪽 서브 트리에 존재
+     *    - postorder의 {끝 인덱스 - (inorder의 끝 인덱스 - index)} 인덱스부터 {끝 인덱스 - 1} 까지는 root 노드의 오른쪽 서브 트리에 존재
+     *    (왼쪽 서브 트리)
+     *    - inorder의 시작 인덱스부터 index - 1 인덱스까지는 root 노드의 왼쪽 서브 트리에 존재
+     *    - postorder의 시작 인덱스부터 {끝 인덱스 - (inorder의 끝 인덱스 - index) - 1} 인덱스까지는 root 노드의 왼쪽 서브 트리에 존재
+     * @param inorderStart
+     * @param inorderEnd
+     * @param postOrderStart
+     * @param postOrderEnd
+     * @return
+     */
     private static Node makeTree(int inorderStart, int inorderEnd, int postOrderStart, int postOrderEnd) {
         if(postOrderStart > postOrderEnd || inorderStart > inorderEnd){
             return null;
