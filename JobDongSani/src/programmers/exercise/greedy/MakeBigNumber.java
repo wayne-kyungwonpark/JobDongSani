@@ -13,6 +13,7 @@ public class MakeBigNumber {
 //        String number = "987654321";
         String number = "12321232123";
 //        String number = "77666666666666";
+//        String number = "87654321";
         int k = 4;
         System.out.println(solution(number, k));
     }
@@ -22,7 +23,8 @@ public class MakeBigNumber {
      * 1. stack이 비어있다면 숫자를 넣는다.
      * 2. stack이 비어 있지 않다면 현재 넣으려는 숫자가 stack의 peek()보다 작거나 같을 때까지 stack에서 수를 빼낸다.
      *    (이 때 제거되는 숫자 갯수만큼 k에서 빼 준다. k가 양수일 때만 해당 로직을 기동한다.)
- *        ex. number = 12321232123, k = 4
+     * 3. 2.의 과정이 끝나면 숫자를 넣는다.
+     *    ex. number = 12321232123, k = 4
      *      push(1)                 (stack: 1)
      *      -> pop() (k: 4 -> 3)    (stack: empty)
      *      -> push(2)              (stack: 2)
@@ -38,7 +40,7 @@ public class MakeBigNumber {
      *      -> push(2) -> push(1) -> push(2) -> push(3)
      *
      * 만약 원래 숫자가 내림차순으로 정렬되어 있다면, 남아 있는 k가 0보다 클 것이고,
-     * 이 경우 남은 k번 만큼 stack.pop()을 수행한다.
+     * 이 경우 남은 k번 만큼 stack.pop()을 수행한다. (내림차순 정렬되어 있으므로 뒤에 있는 숫자가 작고, 이 수들을 빼면 된다.)
      * @param number
      * @param k
      * @return
