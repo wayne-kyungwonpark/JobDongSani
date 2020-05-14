@@ -1,6 +1,8 @@
 package programmers.exercise.greedy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SportsUniform {
     public static void main(String[] args) {
@@ -13,49 +15,53 @@ public class SportsUniform {
 //        int n = 3;
 //        int[] lost = {3};
 //        int[] reserve = {1};
+//        int n = 5;
+//        int[] lost = {1, 2};
+//        int[] reserve = {2, 3};
         int n = 5;
-        int[] lost = {1, 2};
-        int[] reserve = {2, 3};
+        int[] lost = {1, 2, 4, 5};
+        int[] reserve = {1, 3, 4};
         System.out.println(solution(n, lost, reserve));
     }
 
     public static int solution(int n, int[] lost, int[] reserve) {
-        int answer = n - lost.length;
-
         Arrays.sort(lost);
         Arrays.sort(reserve);
-        boolean[] checkForReserve = new boolean[reserve.length]; // 여분을 가져왔지만, 자신의 체육복을 잃어버려 빌려줄 수 없는 학생에 true 체크
+        List<Integer> lostList = new ArrayList<>();
+        List<Integer> reserveList = new ArrayList<>();
+        // 잃어버린 사람 중 여벌을 가져온 사람을 제외시킨다.
         for (int i = 0; i < lost.length; i++) {
             int index = Arrays.binarySearch(reserve, lost[i]);
-            if(index >= 0){
-                checkForReserve[index] = true;
-            }
-        }
-        boolean[] checkForLost = new boolean[lost.length]; // 체육복을 잃어버렸으나, 자신이 여분을 가져와 자기 자신에게 빌릴 수 있는 학생에 true 체크
-        for (int i = 0; i < reserve.length; i++) {
-            int index = Arrays.binarySearch(lost, reserve[i]);
-            if(index >= 0){
-                checkForLost[index] = true;
+            if(index < 0){
+                lostList.add(lost[i]);
             }
         }
 
+        // 여벌을 가져온 사람 중 잃어버린 사람을 제외시킨다.
+        for (int i = 0; i < reserve.length; i++) {
+            int index = Arrays.binarySearch(lost, reserve[i]);
+            if(index < 0){
+                reserveList.add(reserve[i]);
+            }
+        }
+
+        int answer = n - lostList.size();
+
+        // 오름차순으로 잃어버린 사람들에 대해 양 옆으로 여벌을 가져온 사람이 있는지 확인한다.
+        // 잃어버린 사람과 여벌을 가져온 사람들 모두 오름차순으로 정렬해놓았기 때문에 가능하다.
         int j = 0;
-        for (int i = 0; i < lost.length; i++) {
-            while(j < reserve.length){
-                if(!checkForLost[i] && !checkForReserve[j] && reserve[j] == lost[i] - 1){ // ex. lost: 2, reserve: 1
+        for (int i = 0; i < lostList.size(); i++) {
+            while(j < reserveList.size()){
+                if(reserveList.get(j) == lostList.get(i) - 1){ // ex. lost: 2, reserve: 1
                     answer++;
                     j++;
                     break;
-                }else if(checkForLost[i]){ // ex. lost: 2, reserve: 2
-                    answer++;
-                    j++;
-                    break;
-                }else if(!checkForLost[i] && !checkForReserve[j] && reserve[j] == lost[i] + 1){ // ex. lost: 2, reserve: 3
+                }else if(reserveList.get(j) == lostList.get(i) + 1){ // ex. lost: 2, reserve: 3
                     answer++;
                     j++;
                     break;
                 }else{
-                    if(reserve[j] > lost[i] + 1){ // ex. lost: 2, reserve: 4 -> 해당 lost의 경우 여벌을 빌려줄 수 없다. 다음 lost 원소로 넘어간다.
+                    if(reserveList.get(j) > lostList.get(i) + 1){ // ex. lost: 2, reserve: 4 -> 해당 lost의 경우 여벌을 빌려줄 수 없다. 다음 lost 원소로 넘어간다.
                         break;
                     }
                 }
