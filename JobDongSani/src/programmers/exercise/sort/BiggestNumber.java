@@ -16,7 +16,9 @@ public class BiggestNumber {
 //        int[] numbers = {40, 404};
 //        int[] numbers = {40, 405};
 //        int[] numbers = {40, 403};
-        int[] numbers = {0, 0, 0, 0, 0};
+//        int[] numbers = {0, 0, 0, 0, 0};
+        int[] numbers = {12, 12120, 1212};
+//        int[] numbers = {21, 212};
         System.out.println(solution(numbers));
 
 //        NewInteger o1 = new NewInteger(200);
