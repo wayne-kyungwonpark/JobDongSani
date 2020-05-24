@@ -17,7 +17,8 @@ public class BiggestNumber {
 //        int[] numbers = {40, 405};
 //        int[] numbers = {40, 403};
 //        int[] numbers = {0, 0, 0, 0, 0};
-        int[] numbers = {12, 12120, 1212};
+//        int[] numbers = {12, 12120, 1212};
+        int[] numbers = {34, 344};
 //        int[] numbers = {21, 212};
         System.out.println(solution(numbers));
 
@@ -67,24 +68,25 @@ public class BiggestNumber {
         }
 
         private int compare(char[] chArr1, char[] chArr2, int start1, int end1, int start2, int end2){
-            int index1 = start1;
-            int index2 = start2;
-            while(index1 <= end1 && index2 <= end2){
-                if(chArr1[index1] < chArr2[index2]){
+            char[] chArr1to2 = new char[chArr1.length + chArr2.length];
+            char[] chArr2to1 = new char[chArr1.length + chArr2.length];
+
+            for (int i = 0; i < chArr1.length; i++) {
+                chArr1to2[i] = chArr1[i];
+                chArr2to1[i + chArr2.length] = chArr1[i];
+            }
+            for (int i = 0; i < chArr2.length; i++) {
+                chArr1to2[i + chArr1.length] = chArr2[i];
+                chArr2to1[i] = chArr2[i];
+            }
+
+            for (int i = 0; i < chArr1to2.length; i++) {
+                if(chArr1to2[i] < chArr2to1[i]){
                     return -1;
-                }else if(chArr1[index1] > chArr2[index2]){
+                }else if(chArr1to2[i] > chArr2to1[i]){
                     return 1;
                 }
-                index1++;
-                index2++;
             }
-
-            if(index1 <= end1){
-                return compare(chArr1, chArr1, index1, end1, start1, start1 + (end1 - index1));
-            }else if(index2 <= end2){
-                return compare(chArr2, chArr2, index2, end2, start2, start2 + (end2 - index2));
-            }
-
             return 0;
         }
     }
