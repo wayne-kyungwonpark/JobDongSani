@@ -54,7 +54,7 @@ public class NPresentation {
      * @param NLength : N을 몇 번 사용해야 하는지에 대한 파라미터
      * @param N : 사용할 숫자
      * @param prevNumber : 이전까지의 계산 이력
-     * @param operator : 0(+), 1(-), 2(*), 3(/) -> 이전 계산 이력에 새로 만들 숫자를 어떻게 넣을지에 대한 연산 표시
+     * @param operator : 0(+), 1(-), 2(*), 3(/) -> 이전 계산 이력에 새로 만들 숫자를 어떻게 연산할 지에 대한 연산 표시
      * @param candidates : 새로 만든 숫자를 넣을 set
      * @param candidatesList : dp 용도의 set의 List
      */
