@@ -1,4 +1,4 @@
-package algorithm.baekjoon.usaco._2019.December;
+package algorithm.baekjoon.usaco._2019.December.bronze;
 
 import java.io.BufferedReader;
 import java.io.IOException;
