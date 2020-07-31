@@ -19,7 +19,7 @@ public class _13306_Tree2 {
         N = Integer.parseInt(NQ[0]);
         Q = Integer.parseInt(NQ[1]);
         depths = new int[N + 1];
-        maxDepth = (int) Math.floor(Math.log(N + 1));
+        maxDepth = (int) (Math.log(N + 1) / Math.log(2)) + 1;
         ancestors = new int[N + 1][maxDepth + 1];
         start = new int[N + 1];
         end = new int[N + 1];
