@@ -46,9 +46,9 @@ public class C {
             if(numToComputeResult.containsKey(num)){ // 결과가 기존에 있다면 있는 것을 사용
                 sb.append(numToComputeResult.get(num));
             }else{ // 결과가 기존에 없다면 사용한 뒤 맵에 넣음
-                int computeResult = Function.compute(num);
-                sb.append(computeResult);
-                numToComputeResult.put(num, computeResult);
+//                int computeResult = Function.compute(num);
+//                sb.append(computeResult);
+//                numToComputeResult.put(num, computeResult);
             }
             if(i != strArr.length - 1){
                 sb.append(" ");
