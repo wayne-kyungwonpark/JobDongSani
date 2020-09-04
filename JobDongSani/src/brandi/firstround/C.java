@@ -1,4 +1,4 @@
-package brandi;
+package brandi.firstround;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,6 +44,6 @@ public class C {
         if(check[current]){
             return false;
         }
-
+        return false;
     }
 }
