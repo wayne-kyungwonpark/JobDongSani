@@ -36,7 +36,7 @@ class Child extends Thread {
 	}
 	public void run() {
 		for (int i=0; i<1000; i++){
-			b.withdraw(1000);			
+			b.withdraw(1000);
 		}
 	}
 }
