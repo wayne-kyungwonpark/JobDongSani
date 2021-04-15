@@ -1,17 +1,16 @@
-package programmers.monthlycodechallenge.season2;
+package programmers.monthlycodechallenge.season1.second;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.PriorityQueue;
 
-// 트리의 아무 노드를 루트로 삼아 가장 먼 leaf 노드들을 찾는다.
-// 가장 먼 leaf 노드를 기준으로 dijkstra를 돌려 두 번째로 큰 거리 중 큰 값을 리턴한다.
-public class C3 {
+// dijkstra
+public class C2 {
     public static void main(String[] args) {
 //        int n = 5;
 //        int[][] edges = {{1,5},{2,5},{3,5},{4,5}};
-//        int n = 4;
-//        int[][] edges = {{1,2},{2,3},{3,4}};
-        int n = 3;
-        int[][] edges = {{1,3},{2,3}};
+        int n = 4;
+        int[][] edges = {{1,2},{2,3},{3,4}};
         System.out.println(solution(n, edges));
     }
 
@@ -28,37 +27,7 @@ public class C3 {
             adjList.get(edges[i][1]).add(edges[i][0]);
         }
 
-        Map<Integer, ArrayList<Integer>> nodesPerLevel = new HashMap<>();
-        Queue<Integer> queueForBfs = new LinkedList<>();
-        queueForBfs.offer(n / 2);
-        boolean[] visit = new boolean[n + 1];
-        visit[n / 2] = true;
-        int level = 1;
-        while(!queueForBfs.isEmpty()){
-            nodesPerLevel.put(level, new ArrayList<>());
-            int size = queueForBfs.size();
-            for (int i = 0; i < size; i++) {
-                int node = queueForBfs.poll();
-                for(int adjNode : adjList.get(node)){
-                    if(!visit[adjNode]){
-                        queueForBfs.offer(adjNode);
-                        visit[adjNode] = true;
-                        nodesPerLevel.get(level).add(adjNode);
-                    }
-                }
-            }
-            level++;
-        }
-//
-//        if(nodesPerLevel.get(level - 2).size() >= 2){
-//            answer = level - 2;
-//        }else if(nodesPerLevel.get(level - 2).size() == 1){
-//            answer = level - 3;
-//        }
-
-//        nodesPerLevel.get(level - 2).add(1);
-
-        for (int root : nodesPerLevel.get(level - 2)) {
+        for (int root = 1; root <= n; root++) {
             if(adjList.get(root).size() != 1){
                 continue;
             }

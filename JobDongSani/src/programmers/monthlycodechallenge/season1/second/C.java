@@ -1,4 +1,4 @@
-package programmers.monthlycodechallenge.season2;
+package programmers.monthlycodechallenge.season1.second;
 
 import java.util.Arrays;
 
